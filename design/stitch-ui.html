@@ -1,0 +1,2576 @@
+<!-- Main Focus Timer -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+      name="viewport"
+    />
+    <meta content="mobile_tab" name="shell-type" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#00174b",
+              "tertiary-fixed": "#7ffc97",
+              "on-error": "#ffffff",
+              "surface-variant": "#dae2fd",
+              "inverse-surface": "#283044",
+              "on-surface-variant": "#434655",
+              "on-primary-fixed-variant": "#003ea8",
+              outline: "#737686",
+              "error-container": "#ffdad6",
+              "on-primary-container": "#eeefff",
+              "outline-variant": "#c3c6d7",
+              secondary: "#1d4ed8",
+              "primary-container": "#2563eb",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed-variant": "#005320",
+              "surface-container-highest": "#dae2fd",
+              "tertiary-fixed-dim": "#62df7d",
+              "secondary-fixed-dim": "#b7c4ff",
+              "secondary-fixed": "#dce1ff",
+              "on-secondary-fixed": "#001551",
+              "surface-bright": "#faf8ff",
+              "surface-container-low": "#f2f3ff",
+              "surface-dim": "#d2d9f4",
+              error: "#ba1a1a",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#e2e7ff",
+              "surface-tint": "#0053db",
+              "secondary-container": "#4069f2",
+              "on-tertiary-container": "#c7ffca",
+              primary: "#004ac6",
+              tertiary: "#006329",
+              surface: "#faf8ff",
+              "on-background": "#131b2e",
+              "inverse-on-surface": "#eef0ff",
+              "primary-fixed": "#dbe1ff",
+              "tertiary-container": "#007f36",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-secondary-fixed-variant": "#0039b5",
+              "on-secondary-container": "#fffbff",
+              "inverse-primary": "#b4c5ff",
+              "surface-container": "#eaedff",
+              background: "#faf8ff",
+              "on-surface": "#131b2e",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed": "#002109",
+              "on-secondary": "#ffffff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              margin: "1.25rem",
+              gutter: "1rem",
+              "gutter-sm": "0.75rem",
+              "space-sm": "0.5rem",
+              "space-md": "1rem",
+              "space-lg": "1.5rem",
+              "margin-mobile": "1.25rem",
+              "space-xs": "0.25rem",
+              "space-xl": "2rem",
+            },
+            fontFamily: {
+              "title-sm": ["Inter"],
+              "body-sm": ["Inter"],
+              "body-md": ["Inter"],
+              "headline-lg": ["Inter"],
+              "headline-md": ["Inter"],
+              "label-md": ["Inter"],
+              "body-lg": ["Inter"],
+              "display-timer-compact": ["Inter"],
+              "display-timer": ["Inter"],
+              "label-caps": ["Inter"],
+            },
+            fontSize: {
+              "title-sm": [
+                "16px",
+                {
+                  lineHeight: "22px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }],
+              "body-md": ["15px", { lineHeight: "22px", fontWeight: "400" }],
+              "headline-lg": [
+                "28px",
+                {
+                  lineHeight: "34px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-md": [
+                "22px",
+                {
+                  lineHeight: "28px",
+                  letterSpacing: "-0.015em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-md": ["14px", { lineHeight: "18px", fontWeight: "500" }],
+              "body-lg": [
+                "17px",
+                {
+                  lineHeight: "24px",
+                  letterSpacing: "-0.005em",
+                  fontWeight: "400",
+                },
+              ],
+              "display-timer-compact": [
+                "56px",
+                {
+                  lineHeight: "64px",
+                  letterSpacing: "-0.03em",
+                  fontWeight: "300",
+                },
+              ],
+              "display-timer": [
+                "76px",
+                {
+                  lineHeight: "84px",
+                  letterSpacing: "-0.04em",
+                  fontWeight: "300",
+                },
+              ],
+              "label-caps": [
+                "11px",
+                {
+                  lineHeight: "14px",
+                  letterSpacing: "0.06em",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @layer base {
+        html,
+        body {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+          background-color: #faf8ff;
+        }
+        .pb-safe {
+          padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+        .pt-safe {
+          padding-top: env(safe-area-inset-top, 0px);
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <style>
+      html,
+      body {
+        min-height: 884px;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen antialiased"
+  >
+    <header
+      class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.02)]"
+    >
+      <div class="h-16 px-margin flex items-center justify-between">
+        <div class="flex items-center space-x-space-sm">
+          <span class="material-symbols-outlined text-primary text-[24px]"
+            >self_improvement</span
+          >
+          <h1
+            class="font-title-sm text-title-sm tracking-tight text-on-surface select-none"
+          >
+            Timer
+          </h1>
+        </div>
+        <div class="flex items-center space-x-space-sm">
+          <div
+            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined text-on-primary text-[18px]"
+              >person</span
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <main
+      class="flex-1 flex flex-col relative w-full px-margin pt-16 pb-28 bg-surface"
+    ></main>
+    <nav
+      class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.03)]"
+      data-active-classes="text-primary font-title-sm"
+    >
+      <div
+        class="flex justify-around items-center h-16 max-w-md mx-auto px-space-sm"
+      >
+        <a
+          aria-current="page"
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md transition-colors text-primary font-title-sm"
+          data-path="timer"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">timer</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Timer</span
+          ></a
+        ><a
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="tasks"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">checklist</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Tasks</span
+          ></a
+        ><a
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="insights"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">equalizer</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Insights</span
+          ></a
+        ><a
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="settings"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">settings</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Settings</span
+          ></a
+        >
+      </div>
+    </nav>
+  </body>
+</html>
+
+<!-- Ambient Sound Picker -->
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+      name="viewport"
+    />
+    <meta content="mobile_tab" name="shell-type" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#00174b",
+              "tertiary-fixed": "#7ffc97",
+              "on-error": "#ffffff",
+              "surface-variant": "#dae2fd",
+              "inverse-surface": "#283044",
+              "on-surface-variant": "#434655",
+              "on-primary-fixed-variant": "#003ea8",
+              outline: "#737686",
+              "error-container": "#ffdad6",
+              "on-primary-container": "#eeefff",
+              "outline-variant": "#c3c6d7",
+              secondary: "#1d4ed8",
+              "primary-container": "#2563eb",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed-variant": "#005320",
+              "surface-container-highest": "#dae2fd",
+              "tertiary-fixed-dim": "#62df7d",
+              "secondary-fixed-dim": "#b7c4ff",
+              "secondary-fixed": "#dce1ff",
+              "on-secondary-fixed": "#001551",
+              "surface-bright": "#faf8ff",
+              "surface-container-low": "#f2f3ff",
+              "surface-dim": "#d2d9f4",
+              error: "#ba1a1a",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#e2e7ff",
+              "surface-tint": "#0053db",
+              "secondary-container": "#4069f2",
+              "on-tertiary-container": "#c7ffca",
+              primary: "#004ac6",
+              tertiary: "#006329",
+              surface: "#faf8ff",
+              "on-background": "#131b2e",
+              "inverse-on-surface": "#eef0ff",
+              "primary-fixed": "#dbe1ff",
+              "tertiary-container": "#007f36",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-secondary-fixed-variant": "#0039b5",
+              "on-secondary-container": "#fffbff",
+              "inverse-primary": "#b4c5ff",
+              "surface-container": "#eaedff",
+              background: "#faf8ff",
+              "on-surface": "#131b2e",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed": "#002109",
+              "on-secondary": "#ffffff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              margin: "1.25rem",
+              gutter: "1rem",
+              "gutter-sm": "0.75rem",
+              "space-sm": "0.5rem",
+              "space-md": "1rem",
+              "space-lg": "1.5rem",
+              "margin-mobile": "1.25rem",
+              "space-xs": "0.25rem",
+              "space-xl": "2rem",
+            },
+            fontFamily: {
+              "title-sm": ["Inter"],
+              "body-sm": ["Inter"],
+              "body-md": ["Inter"],
+              "headline-lg": ["Inter"],
+              "headline-md": ["Inter"],
+              "label-md": ["Inter"],
+              "body-lg": ["Inter"],
+              "display-timer-compact": ["Inter"],
+              "display-timer": ["Inter"],
+              "label-caps": ["Inter"],
+            },
+            fontSize: {
+              "title-sm": [
+                "16px",
+                {
+                  lineHeight: "22px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }],
+              "body-md": ["15px", { lineHeight: "22px", fontWeight: "400" }],
+              "headline-lg": [
+                "28px",
+                {
+                  lineHeight: "34px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-md": [
+                "22px",
+                {
+                  lineHeight: "28px",
+                  letterSpacing: "-0.015em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-md": ["14px", { lineHeight: "18px", fontWeight: "500" }],
+              "body-lg": [
+                "17px",
+                {
+                  lineHeight: "24px",
+                  letterSpacing: "-0.005em",
+                  fontWeight: "400",
+                },
+              ],
+              "display-timer-compact": [
+                "56px",
+                {
+                  lineHeight: "64px",
+                  letterSpacing: "-0.03em",
+                  fontWeight: "300",
+                },
+              ],
+              "display-timer": [
+                "76px",
+                {
+                  lineHeight: "84px",
+                  letterSpacing: "-0.04em",
+                  fontWeight: "300",
+                },
+              ],
+              "label-caps": [
+                "11px",
+                {
+                  lineHeight: "14px",
+                  letterSpacing: "0.06em",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @layer base {
+        html,
+        body {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+          background-color: #faf8ff;
+        }
+        .pb-safe {
+          padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+        .pt-safe {
+          padding-top: env(safe-area-inset-top, 0px);
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen antialiased"
+  >
+    <header
+      class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.02)]"
+    >
+      <div class="h-16 px-margin flex items-center justify-between">
+        <div class="flex items-center space-x-space-sm">
+          <span class="material-symbols-outlined text-primary text-[24px]"
+            >self_improvement</span
+          >
+          <h1
+            class="font-title-sm text-title-sm tracking-tight text-on-surface select-none"
+          >
+            Timer
+          </h1>
+        </div>
+        <div class="flex items-center space-x-space-sm">
+          <div
+            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined text-on-primary text-[18px]"
+              >person</span
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <main
+      class="flex-1 flex flex-col relative w-full px-margin pt-16 pb-28 bg-surface"
+    >
+      <div class="flex flex-col w-full relative min-w-0">
+        <!-- Dimmed & Soft-Blurred Timer Canvas Behind Modal -->
+        <div
+          class="w-full flex flex-col items-center select-none filter blur-sm opacity-40 pointer-events-none transition-all duration-300"
+        >
+          <!-- Active Focus Session Indicator -->
+          <div
+            class="inline-flex items-center space-x-space-xs bg-surface-container px-space-md py-1.5 rounded-full mb-space-lg shadow-sm"
+          >
+            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            <span
+              class="font-label-caps text-label-caps text-primary uppercase tracking-widest"
+              >Deep Work • Cycle 2 of 4</span
+            >
+          </div>
+          <!-- Radial Timer Mockup -->
+          <div
+            class="relative w-64 h-64 flex items-center justify-center my-space-xs"
+          >
+            <svg
+              class="w-full h-full -rotate-90 transform"
+              viewbox="0 0 100 100"
+            >
+              <circle
+                class="text-surface-container-high"
+                cx="50"
+                cy="50"
+                fill="transparent"
+                r="44"
+                stroke="currentColor"
+                stroke-width="3"
+              ></circle>
+              <circle
+                class="text-primary"
+                cx="50"
+                cy="50"
+                fill="transparent"
+                r="44"
+                stroke="currentColor"
+                stroke-dasharray="276.46"
+                stroke-dashoffset="69.11"
+                stroke-linecap="round"
+                stroke-width="3.5"
+              ></circle>
+            </svg>
+            <div
+              class="absolute inset-0 flex flex-col items-center justify-center text-center"
+            >
+              <span
+                class="font-display-timer-compact text-display-timer-compact text-on-surface tracking-tight font-light"
+                >18:42</span
+              >
+              <span
+                class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs"
+                >Writing Design System Doc</span
+              >
+            </div>
+          </div>
+          <!-- Auxiliary Minimal Timer Controls -->
+          <div class="flex items-center space-x-space-md mt-space-md">
+            <div
+              class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant"
+            >
+              <span class="material-symbols-outlined text-[20px]">refresh</span>
+            </div>
+            <div
+              class="px-space-xl py-3 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center space-x-space-xs"
+            >
+              <span
+                class="material-symbols-outlined text-[20px]"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >pause</span
+              >
+              <span>Pause</span>
+            </div>
+            <div
+              class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant"
+            >
+              <span class="material-symbols-outlined text-[20px]"
+                >skip_next</span
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Modal Tint Backdrop Overlay -->
+        <div
+          class="fixed inset-0 bg-inverse-surface/40 backdrop-blur-[2px] z-40 transition-opacity duration-300"
+        ></div>
+        <!-- Ambient Sound Picker Bottom Sheet -->
+        <div
+          class="fixed inset-x-0 bottom-16 z-50 flex flex-col max-w-md mx-auto bg-surface-container-lowest rounded-t-[28px] shadow-[0_-8px_32px_rgba(15,23,42,0.12)] overflow-hidden"
+        >
+          <!-- Grab Bar -->
+          <div class="w-full flex justify-center pt-3 pb-1">
+            <div class="w-12 h-1.5 bg-surface-variant rounded-full"></div>
+          </div>
+          <!-- Sheet Header -->
+          <div
+            class="px-space-margin pt-space-xs pb-space-sm flex items-start justify-between"
+          >
+            <div class="flex-1 pr-space-md min-w-0">
+              <h2
+                class="font-headline-md text-headline-md text-on-surface tracking-tight"
+              >
+                Choose your atmosphere
+              </h2>
+              <p
+                class="font-body-sm text-body-sm text-on-surface-variant mt-0.5"
+              >
+                Curated soundscapes to anchor your attention.
+              </p>
+            </div>
+            <button
+              aria-label="Close ambient sound sheet"
+              class="w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors flex-shrink-0"
+              type="button"
+            >
+              <span class="material-symbols-outlined text-[20px]">close</span>
+            </button>
+          </div>
+          <!-- Scrollable Soundscapes & Config Section -->
+          <div
+            class="px-space-margin pb-space-md flex flex-col space-y-space-sm max-h-[512px] overflow-y-auto"
+          >
+            <!-- Option 1: Rainfall (Selected State) -->
+            <div
+              class="group relative flex items-center justify-between p-3.5 rounded-xl bg-primary-fixed/20 shadow-sm transition-all cursor-pointer"
+              id="sound-rain"
+            >
+              <div class="flex items-center space-x-3 min-w-0 flex-1">
+                <div
+                  class="w-11 h-11 rounded-full bg-primary-fixed flex items-center justify-center text-primary flex-shrink-0"
+                >
+                  <span
+                    class="material-symbols-outlined text-[22px]"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >rainy</span
+                  >
+                </div>
+                <div class="flex flex-col min-w-0 pr-2">
+                  <div class="flex items-center space-x-1.5">
+                    <span
+                      class="font-title-sm text-title-sm text-on-surface truncate"
+                      >Rainfall</span
+                    >
+                    <span class="w-2 h-2 rounded-full bg-primary"></span>
+                  </div>
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant truncate"
+                    >Gentle summer drizzle on leaves</span
+                  >
+                </div>
+              </div>
+              <div class="flex items-center space-x-2 flex-shrink-0">
+                <!-- Mini Preview Soundwave Indicator -->
+                <button
+                  class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-xs"
+                  type="button"
+                >
+                  <!-- Animated audio waves representation -->
+                  <div
+                    class="flex items-end justify-center space-x-[2px] h-3.5 w-3.5"
+                  >
+                    <span
+                      class="w-[2px] h-2.5 bg-on-primary rounded-full animate-[pulse_0.7s_ease-in-out_infinite]"
+                    ></span>
+                    <span
+                      class="w-[2px] h-3.5 bg-on-primary rounded-full animate-[pulse_0.5s_ease-in-out_infinite]"
+                    ></span>
+                    <span
+                      class="w-[2px] h-1.5 bg-on-primary rounded-full animate-[pulse_0.9s_ease-in-out_infinite]"
+                    ></span>
+                  </div>
+                </button>
+                <!-- Checkmark Badge -->
+                <div
+                  class="w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-[15px] font-bold"
+                    >check</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Option 2: Ocean Waves -->
+            <div
+              class="group relative flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer"
+              id="sound-ocean"
+            >
+              <div class="flex items-center space-x-3 min-w-0 flex-1">
+                <div
+                  class="w-11 h-11 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant flex-shrink-0"
+                >
+                  <span class="material-symbols-outlined text-[22px]"
+                    >tsunami</span
+                  >
+                </div>
+                <div class="flex flex-col min-w-0 pr-2">
+                  <span
+                    class="font-title-sm text-title-sm text-on-surface truncate"
+                    >Ocean Waves</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant truncate"
+                    >Rhythmic distant Pacific swells</span
+                  >
+                </div>
+              </div>
+              <div class="flex items-center flex-shrink-0">
+                <button
+                  aria-label="Preview ocean waves sound"
+                  class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center hover:text-primary transition-colors"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[18px]"
+                    >play_arrow</span
+                  >
+                </button>
+              </div>
+            </div>
+            <!-- Option 3: Quiet Cafe -->
+            <div
+              class="group relative flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer"
+              id="sound-cafe"
+            >
+              <div class="flex items-center space-x-3 min-w-0 flex-1">
+                <div
+                  class="w-11 h-11 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant flex-shrink-0"
+                >
+                  <span class="material-symbols-outlined text-[22px]"
+                    >local_cafe</span
+                  >
+                </div>
+                <div class="flex flex-col min-w-0 pr-2">
+                  <span
+                    class="font-title-sm text-title-sm text-on-surface truncate"
+                    >Quiet Cafe</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant truncate"
+                    >Soft hum of espresso &amp; distant murmur</span
+                  >
+                </div>
+              </div>
+              <div class="flex items-center flex-shrink-0">
+                <button
+                  aria-label="Preview quiet cafe sound"
+                  class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center hover:text-primary transition-colors"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[18px]"
+                    >play_arrow</span
+                  >
+                </button>
+              </div>
+            </div>
+            <!-- Option 4: Pure Silence (Off) -->
+            <div
+              class="group relative flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer"
+              id="sound-none"
+            >
+              <div class="flex items-center space-x-3 min-w-0 flex-1">
+                <div
+                  class="w-11 h-11 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant flex-shrink-0"
+                >
+                  <span class="material-symbols-outlined text-[22px]"
+                    >volume_off</span
+                  >
+                </div>
+                <div class="flex flex-col min-w-0 pr-2">
+                  <span
+                    class="font-title-sm text-title-sm text-on-surface truncate"
+                    >None (Silent)</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant truncate"
+                    >Pure stillness for undisturbed flow</span
+                  >
+                </div>
+              </div>
+              <div class="flex items-center flex-shrink-0 pr-1">
+                <span
+                  class="material-symbols-outlined text-outline-variant text-[20px]"
+                  >radio_button_unchecked</span
+                >
+              </div>
+            </div>
+            <!-- Atmosphere Volume Controls Card -->
+            <div
+              class="mt-space-xs p-4 rounded-xl bg-surface-container-low flex flex-col space-y-3"
+            >
+              <div class="flex items-center justify-between">
+                <span class="font-label-md text-label-md text-on-surface"
+                  >Atmosphere Volume</span
+                >
+                <span
+                  class="font-label-md text-label-md text-primary font-semibold"
+                  id="volume-indicator"
+                  >65%</span
+                >
+              </div>
+              <!-- Custom Tactile Volume Slider -->
+              <div class="flex items-center space-x-3">
+                <span
+                  class="material-symbols-outlined text-[18px] text-on-surface-variant"
+                  >volume_mute</span
+                >
+                <div
+                  class="relative flex-1 h-3 flex items-center cursor-pointer select-none"
+                  id="volume-track-container"
+                >
+                  <!-- Background Track -->
+                  <div
+                    class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden"
+                  >
+                    <!-- Active Fill (65%) -->
+                    <div
+                      class="h-full bg-primary rounded-full"
+                      id="volume-fill"
+                      style="width: 65%"
+                    ></div>
+                  </div>
+                  <!-- Slider Thumb -->
+                  <div
+                    class="absolute w-5 h-5 bg-surface-container-lowest rounded-full shadow-[0_2px_6px_rgba(0,0,0,0.18)] -ml-2.5 transition-transform"
+                    id="volume-thumb"
+                    style="left: 65%"
+                  ></div>
+                </div>
+                <span
+                  class="material-symbols-outlined text-[18px] text-on-surface-variant"
+                  >volume_up</span
+                >
+              </div>
+            </div>
+            <!-- Mute during breaks switch -->
+            <div
+              class="p-3.5 rounded-xl bg-surface-container-low flex items-center justify-between"
+            >
+              <div class="flex flex-col min-w-0 pr-3">
+                <span class="font-label-md text-label-md text-on-surface"
+                  >Mute while on break</span
+                >
+                <span class="font-body-sm text-body-sm text-on-surface-variant"
+                  >Resume automatically when timer restarts</span
+                >
+              </div>
+              <!-- iOS Style Switch Active -->
+              <button
+                aria-checked="true"
+                class="w-12 h-7 bg-primary rounded-full relative p-0.5 flex items-center flex-shrink-0 cursor-pointer shadow-xs transition-colors"
+                id="toggle-break-mute"
+                role="switch"
+                type="button"
+              >
+                <div
+                  class="w-6 h-6 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-5 transition-transform duration-200 ease-out"
+                  id="toggle-thumb"
+                ></div>
+              </button>
+            </div>
+          </div>
+          <!-- Bottom Action Button Container -->
+          <div class="p-space-margin pt-space-xs bg-surface-container-lowest">
+            <button
+              class="w-full h-14 bg-primary hover:bg-secondary active:scale-[0.98] text-on-primary font-label-md text-label-md rounded-full shadow-sm transition-all flex items-center justify-center space-x-space-xs"
+              type="button"
+            >
+              <span
+                class="material-symbols-outlined text-[20px]"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >graphic_eq</span
+              >
+              <span>Set Atmosphere</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          // Interactive Break Mute Switch Toggle
+          const muteToggle = document.getElementById("toggle-break-mute");
+          const muteThumb = document.getElementById("toggle-thumb");
+          let isBreakMuteOn = true;
+
+          if (muteToggle && muteThumb) {
+            muteToggle.addEventListener("click", function () {
+              isBreakMuteOn = !isBreakMuteOn;
+              muteToggle.setAttribute("aria-checked", String(isBreakMuteOn));
+              if (isBreakMuteOn) {
+                muteToggle.classList.remove("bg-surface-variant");
+                muteToggle.classList.add("bg-primary");
+                muteThumb.classList.remove("translate-x-0");
+                muteThumb.classList.add("translate-x-5");
+              } else {
+                muteToggle.classList.remove("bg-primary");
+                muteToggle.classList.add("bg-surface-variant");
+                muteThumb.classList.remove("translate-x-5");
+                muteThumb.classList.add("translate-x-0");
+              }
+            });
+          }
+
+          // Volume Track Interaction Simulation
+          const track = document.getElementById("volume-track-container");
+          const fill = document.getElementById("volume-fill");
+          const thumb = document.getElementById("volume-thumb");
+          const indicator = document.getElementById("volume-indicator");
+
+          if (track && fill && thumb && indicator) {
+            const updateVolume = (e) => {
+              const rect = track.getBoundingClientRect();
+              let clientX = e.clientX;
+              if (e.touches && e.touches.length > 0) {
+                clientX = e.touches[0].clientX;
+              }
+              let percentage = Math.round(
+                ((clientX - rect.left) / rect.width) * 100,
+              );
+              percentage = Math.max(0, Math.min(100, percentage));
+
+              fill.style.width = percentage + "%";
+              thumb.style.left = percentage + "%";
+              indicator.textContent = percentage + "%";
+            };
+
+            let isDragging = false;
+            track.addEventListener("mousedown", (e) => {
+              isDragging = true;
+              updateVolume(e);
+            });
+            window.addEventListener("mousemove", (e) => {
+              if (isDragging) updateVolume(e);
+            });
+            window.addEventListener("mouseup", () => {
+              isDragging = false;
+            });
+
+            track.addEventListener(
+              "touchstart",
+              (e) => {
+                isDragging = true;
+                updateVolume(e);
+              },
+              { passive: true },
+            );
+            window.addEventListener(
+              "touchmove",
+              (e) => {
+                if (isDragging) updateVolume(e);
+              },
+              { passive: true },
+            );
+            window.addEventListener("touchend", () => {
+              isDragging = false;
+            });
+          }
+        })();
+      </script>
+    </main>
+    <nav
+      class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.03)]"
+      data-active-classes="text-primary font-title-sm"
+    >
+      <div
+        class="flex justify-around items-center h-16 max-w-md mx-auto px-space-sm"
+      >
+        <a
+          aria-current="page"
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md transition-colors text-primary font-title-sm"
+          data-path="timer"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">timer</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Timer</span
+          ></a
+        ><a
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="tasks"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">checklist</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Tasks</span
+          ></a
+        ><a
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="insights"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">equalizer</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Insights</span
+          ></a
+        ><a
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="settings"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">settings</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Settings</span
+          ></a
+        >
+      </div>
+    </nav>
+  </body>
+</html>
+
+<!-- Settings -->
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+      name="viewport"
+    />
+    <meta content="mobile_tab" name="shell-type" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#00174b",
+              "tertiary-fixed": "#7ffc97",
+              "on-error": "#ffffff",
+              "surface-variant": "#dae2fd",
+              "inverse-surface": "#283044",
+              "on-surface-variant": "#434655",
+              "on-primary-fixed-variant": "#003ea8",
+              outline: "#737686",
+              "error-container": "#ffdad6",
+              "on-primary-container": "#eeefff",
+              "outline-variant": "#c3c6d7",
+              secondary: "#1d4ed8",
+              "primary-container": "#2563eb",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed-variant": "#005320",
+              "surface-container-highest": "#dae2fd",
+              "tertiary-fixed-dim": "#62df7d",
+              "secondary-fixed-dim": "#b7c4ff",
+              "secondary-fixed": "#dce1ff",
+              "on-secondary-fixed": "#001551",
+              "surface-bright": "#faf8ff",
+              "surface-container-low": "#f2f3ff",
+              "surface-dim": "#d2d9f4",
+              error: "#ba1a1a",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#e2e7ff",
+              "surface-tint": "#0053db",
+              "secondary-container": "#4069f2",
+              "on-tertiary-container": "#c7ffca",
+              primary: "#004ac6",
+              tertiary: "#006329",
+              surface: "#faf8ff",
+              "on-background": "#131b2e",
+              "inverse-on-surface": "#eef0ff",
+              "primary-fixed": "#dbe1ff",
+              "tertiary-container": "#007f36",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-secondary-fixed-variant": "#0039b5",
+              "on-secondary-container": "#fffbff",
+              "inverse-primary": "#b4c5ff",
+              "surface-container": "#eaedff",
+              background: "#faf8ff",
+              "on-surface": "#131b2e",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed": "#002109",
+              "on-secondary": "#ffffff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              margin: "1.25rem",
+              gutter: "1rem",
+              "gutter-sm": "0.75rem",
+              "space-sm": "0.5rem",
+              "space-md": "1rem",
+              "space-lg": "1.5rem",
+              "margin-mobile": "1.25rem",
+              "space-xs": "0.25rem",
+              "space-xl": "2rem",
+            },
+            fontFamily: {
+              "title-sm": ["Inter"],
+              "body-sm": ["Inter"],
+              "body-md": ["Inter"],
+              "headline-lg": ["Inter"],
+              "headline-md": ["Inter"],
+              "label-md": ["Inter"],
+              "body-lg": ["Inter"],
+              "display-timer-compact": ["Inter"],
+              "display-timer": ["Inter"],
+              "label-caps": ["Inter"],
+            },
+            fontSize: {
+              "title-sm": [
+                "16px",
+                {
+                  lineHeight: "22px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }],
+              "body-md": ["15px", { lineHeight: "22px", fontWeight: "400" }],
+              "headline-lg": [
+                "28px",
+                {
+                  lineHeight: "34px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-md": [
+                "22px",
+                {
+                  lineHeight: "28px",
+                  letterSpacing: "-0.015em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-md": ["14px", { lineHeight: "18px", fontWeight: "500" }],
+              "body-lg": [
+                "17px",
+                {
+                  lineHeight: "24px",
+                  letterSpacing: "-0.005em",
+                  fontWeight: "400",
+                },
+              ],
+              "display-timer-compact": [
+                "56px",
+                {
+                  lineHeight: "64px",
+                  letterSpacing: "-0.03em",
+                  fontWeight: "300",
+                },
+              ],
+              "display-timer": [
+                "76px",
+                {
+                  lineHeight: "84px",
+                  letterSpacing: "-0.04em",
+                  fontWeight: "300",
+                },
+              ],
+              "label-caps": [
+                "11px",
+                {
+                  lineHeight: "14px",
+                  letterSpacing: "0.06em",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @layer base {
+        html,
+        body {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+          background-color: #faf8ff;
+        }
+        .pb-safe {
+          padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+        .pt-safe {
+          padding-top: env(safe-area-inset-top, 0px);
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen antialiased"
+  >
+    <header
+      class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.02)]"
+    >
+      <div class="h-16 px-margin flex items-center justify-between">
+        <div class="flex items-center space-x-space-sm">
+          <span class="material-symbols-outlined text-primary text-[24px]"
+            >self_improvement</span
+          >
+          <h1
+            class="font-title-sm text-title-sm tracking-tight text-on-surface select-none"
+          >
+            Settings
+          </h1>
+        </div>
+        <div class="flex items-center space-x-space-sm">
+          <div
+            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined text-on-primary text-[18px]"
+              >person</span
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <main
+      class="flex-1 flex flex-col relative w-full px-margin pt-16 pb-28 bg-surface"
+    >
+      <div class="flex flex-col w-full">
+        <!-- Interactive Top Action Area -->
+        <div class="flex items-center justify-between pb-space-md">
+          <button
+            aria-label="Go back"
+            class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors active:scale-95"
+            type="button"
+          >
+            <span class="material-symbols-outlined text-[20px]"
+              >arrow_back</span
+            >
+          </button>
+          <div class="flex flex-col items-center">
+            <span class="font-title-sm text-title-sm text-on-surface"
+              >Preferences</span
+            >
+            <span
+              class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider"
+              >Mindful Calibration</span
+            >
+          </div>
+          <div
+            class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary"
+          >
+            <span
+              class="material-symbols-outlined text-[20px]"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >tune</span
+            >
+          </div>
+        </div>
+        <!-- Group 1: Timer Durations -->
+        <div class="mt-space-sm">
+          <div
+            class="px-space-xs mb-space-xs flex items-center justify-between"
+          >
+            <span
+              class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase"
+              >Timer Durations</span
+            >
+            <span
+              class="font-body-sm text-body-sm text-primary flex items-center space-x-1"
+            >
+              <span class="material-symbols-outlined text-[14px]"
+                >cloud_download</span
+              >
+              <span>Standard Interval</span>
+            </span>
+          </div>
+          <div
+            class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col"
+          >
+            <!-- Focus Duration Row -->
+            <div class="p-space-md flex items-center justify-between">
+              <div class="flex items-center space-x-space-md min-w-0">
+                <div
+                  class="w-9 h-9 rounded-lg bg-primary-fixed flex items-center justify-center text-primary shrink-0"
+                >
+                  <span
+                    class="material-symbols-outlined text-[20px]"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >psychology</span
+                  >
+                </div>
+                <div class="flex flex-col min-w-0">
+                  <span
+                    class="font-label-md text-label-md text-on-surface font-semibold truncate"
+                    >Focus Duration</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant"
+                    >Recommended deep work</span
+                  >
+                </div>
+              </div>
+              <div
+                class="flex items-center bg-surface-container rounded-full p-1 space-x-1 shrink-0"
+              >
+                <button
+                  class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface shadow-sm active:scale-90 transition-transform"
+                  id="focus-dec"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[14px]"
+                    >remove</span
+                  >
+                </button>
+                <span
+                  class="font-label-md text-label-md text-primary font-bold px-2 tabular-nums"
+                  id="focus-val"
+                  >25 min</span
+                >
+                <button
+                  class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface shadow-sm active:scale-90 transition-transform"
+                  id="focus-inc"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[14px]">add</span>
+                </button>
+              </div>
+            </div>
+            <div class="h-[1px] bg-surface-container-low mx-space-md"></div>
+            <!-- Short Break Row -->
+            <div class="p-space-md flex items-center justify-between">
+              <div class="flex items-center space-x-space-md min-w-0">
+                <div
+                  class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary shrink-0"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >local_cafe</span
+                  >
+                </div>
+                <div class="flex flex-col min-w-0">
+                  <span
+                    class="font-label-md text-label-md text-on-surface font-semibold truncate"
+                    >Short Break</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant"
+                    >Breathing &amp; water pause</span
+                  >
+                </div>
+              </div>
+              <div
+                class="flex items-center bg-surface-container rounded-full p-1 space-x-1 shrink-0"
+              >
+                <button
+                  class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface shadow-sm active:scale-90 transition-transform"
+                  id="sbreak-dec"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[14px]"
+                    >remove</span
+                  >
+                </button>
+                <span
+                  class="font-label-md text-label-md text-on-surface font-semibold px-2 tabular-nums"
+                  id="sbreak-val"
+                  >5 min</span
+                >
+                <button
+                  class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface shadow-sm active:scale-90 transition-transform"
+                  id="sbreak-inc"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[14px]">add</span>
+                </button>
+              </div>
+            </div>
+            <div class="h-[1px] bg-surface-container-low mx-space-md"></div>
+            <!-- Long Break Row -->
+            <div class="p-space-md flex items-center justify-between">
+              <div class="flex items-center space-x-space-md min-w-0">
+                <div
+                  class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >nature_people</span
+                  >
+                </div>
+                <div class="flex flex-col min-w-0">
+                  <span
+                    class="font-label-md text-label-md text-on-surface font-semibold truncate"
+                    >Long Break</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant"
+                    >Every 4 intervals</span
+                  >
+                </div>
+              </div>
+              <div
+                class="flex items-center bg-surface-container rounded-full p-1 space-x-1 shrink-0"
+              >
+                <button
+                  class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface shadow-sm active:scale-90 transition-transform"
+                  id="lbreak-dec"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[14px]"
+                    >remove</span
+                  >
+                </button>
+                <span
+                  class="font-label-md text-label-md text-on-surface font-semibold px-2 tabular-nums"
+                  id="lbreak-val"
+                  >15 min</span
+                >
+                <button
+                  class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface shadow-sm active:scale-90 transition-transform"
+                  id="lbreak-inc"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[14px]">add</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Group 2: Audio & Sensory -->
+        <div class="mt-space-lg">
+          <div class="px-space-xs mb-space-xs">
+            <span
+              class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase"
+              >Audio &amp; Haptics</span
+            >
+          </div>
+          <div
+            class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col"
+          >
+            <!-- Volume Slider Row -->
+            <div class="p-space-md flex flex-col space-y-space-sm">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-space-md">
+                  <div
+                    class="w-9 h-9 rounded-lg bg-primary-fixed flex items-center justify-center text-primary shrink-0"
+                  >
+                    <span class="material-symbols-outlined text-[20px]"
+                      >volume_up</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      class="font-label-md text-label-md text-on-surface font-semibold"
+                      >Sound Volume</span
+                    >
+                    <p
+                      class="font-body-sm text-body-sm text-on-surface-variant"
+                    >
+                      Ambient bell intensity
+                    </p>
+                  </div>
+                </div>
+                <span
+                  class="font-label-md text-label-md text-primary font-bold tabular-nums"
+                  id="volume-readout"
+                  >70%</span
+                >
+              </div>
+              <div class="pt-1 flex items-center space-x-space-sm">
+                <span
+                  class="material-symbols-outlined text-outline-variant text-[16px]"
+                  >volume_mute</span
+                >
+                <input
+                  class="w-full h-1.5 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary"
+                  id="volume-slider"
+                  max="100"
+                  min="0"
+                  type="range"
+                  value="70"
+                />
+                <span class="material-symbols-outlined text-outline text-[16px]"
+                  >volume_up</span
+                >
+              </div>
+            </div>
+            <div class="h-[1px] bg-surface-container-low mx-space-md"></div>
+            <!-- End Sound Bell Row -->
+            <div class="p-space-md flex items-center justify-between">
+              <div class="flex items-center space-x-space-md min-w-0">
+                <div
+                  class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >notifications_active</span
+                  >
+                </div>
+                <div class="flex flex-col min-w-0">
+                  <span
+                    class="font-label-md text-label-md text-on-surface font-semibold truncate"
+                    >Session Completion</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant truncate"
+                    >Singing Bowl (Clear 432Hz)</span
+                  >
+                </div>
+              </div>
+              <button
+                class="flex items-center space-x-1.5 px-3 py-1.5 bg-surface-container-low hover:bg-surface-container rounded-full text-primary transition-all active:scale-95 shrink-0"
+                id="preview-audio-btn"
+                type="button"
+              >
+                <span
+                  class="material-symbols-outlined text-[16px]"
+                  id="preview-icon"
+                  >play_arrow</span
+                >
+                <span
+                  class="font-label-caps text-label-caps uppercase font-bold tracking-wider"
+                  id="preview-text"
+                  >Preview</span
+                >
+              </button>
+            </div>
+            <div class="h-[1px] bg-surface-container-low mx-space-md"></div>
+            <!-- Haptics Toggle -->
+            <div class="p-space-md flex items-center justify-between">
+              <div class="flex items-center space-x-space-md min-w-0">
+                <div
+                  class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary shrink-0"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >vibration</span
+                  >
+                </div>
+                <div class="flex flex-col min-w-0 pr-space-sm">
+                  <span
+                    class="font-label-md text-label-md text-on-surface font-semibold truncate"
+                    >Haptic Pulses</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant truncate"
+                    >Physical tap cues at transitions</span
+                  >
+                </div>
+              </div>
+              <button
+                aria-checked="true"
+                class="w-12 h-7 bg-primary-container rounded-full p-1 transition-colors relative shrink-0"
+                id="toggle-haptics"
+                role="switch"
+                type="button"
+              >
+                <div
+                  class="w-5 h-5 bg-on-primary rounded-full shadow-sm transform translate-x-5 transition-transform duration-200"
+                  id="haptics-thumb"
+                ></div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Group 3: System & Mindfulness Mode -->
+        <div class="mt-space-lg">
+          <div class="px-space-xs mb-space-xs">
+            <span
+              class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase"
+              >System &amp; Behavior</span
+            >
+          </div>
+          <div
+            class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col"
+          >
+            <!-- Keep Screen Awake Toggle -->
+            <div class="p-space-md flex items-center justify-between">
+              <div class="flex items-center space-x-space-md min-w-0">
+                <div
+                  class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-on-surface shrink-0"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >wb_sunny</span
+                  >
+                </div>
+                <div class="flex flex-col min-w-0 pr-space-sm">
+                  <span
+                    class="font-label-md text-label-md text-on-surface font-semibold truncate"
+                    >Keep Display Awake</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant truncate"
+                    >Dim softly during active focus</span
+                  >
+                </div>
+              </div>
+              <button
+                aria-checked="true"
+                class="w-12 h-7 bg-primary-container rounded-full p-1 transition-colors relative shrink-0"
+                id="toggle-awake"
+                role="switch"
+                type="button"
+              >
+                <div
+                  class="w-5 h-5 bg-on-primary rounded-full shadow-sm transform translate-x-5 transition-transform duration-200"
+                  id="awake-thumb"
+                ></div>
+              </button>
+            </div>
+            <div class="h-[1px] bg-surface-container-low mx-space-md"></div>
+            <!-- Factory Reset Row -->
+            <button
+              class="p-space-md w-full flex items-center justify-between hover:bg-surface-container-low transition-colors text-left active:bg-surface-container"
+              id="reset-btn"
+              type="button"
+            >
+              <div class="flex items-center space-x-space-md">
+                <div
+                  class="w-9 h-9 rounded-lg bg-error-container flex items-center justify-center text-error shrink-0"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >restart_alt</span
+                  >
+                </div>
+                <div class="flex flex-col">
+                  <span
+                    class="font-label-md text-label-md text-error font-semibold"
+                    >Restore Default Timers</span
+                  >
+                  <span
+                    class="font-body-sm text-body-sm text-on-surface-variant"
+                    >Revert to standard 25 / 5 / 15 cycles</span
+                  >
+                </div>
+              </div>
+              <span class="material-symbols-outlined text-outline text-[18px]"
+                >chevron_right</span
+              >
+            </button>
+          </div>
+        </div>
+        <!-- Calming Zen Quote / Affirmation Card -->
+        <div
+          class="mt-space-lg p-space-md bg-surface-container-low rounded-xl flex items-start space-x-space-sm"
+        >
+          <span
+            class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5"
+            >spa</span
+          >
+          <p
+            class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed"
+          >
+            "Stillness is not about stopping thought, but creating enough space
+            to see clearly."
+          </p>
+        </div>
+        <!-- Footer Meta -->
+        <div
+          class="flex flex-col items-center justify-center text-center mt-space-lg mb-space-xs"
+        >
+          <div
+            class="flex items-center space-x-1.5 text-on-surface-variant opacity-70"
+          >
+            <span class="material-symbols-outlined text-[14px]"
+              >offline_pin</span
+            >
+            <span
+              class="font-label-caps text-label-caps uppercase tracking-wider"
+              >Local &amp; Private • Zero Telemetry</span
+            >
+          </div>
+          <span class="font-body-sm text-body-sm text-outline mt-1"
+            >Still v1.0 • Mindful Focus Companion</span
+          >
+        </div>
+      </div>
+      <script>
+        (function initSettingsScreen() {
+          // Steppers state
+          const steppers = {
+            focus: {
+              val: 25,
+              min: 5,
+              max: 90,
+              step: 5,
+              el: document.getElementById("focus-val"),
+            },
+            sbreak: {
+              val: 5,
+              min: 1,
+              max: 20,
+              step: 1,
+              el: document.getElementById("sbreak-val"),
+            },
+            lbreak: {
+              val: 15,
+              min: 5,
+              max: 45,
+              step: 5,
+              el: document.getElementById("lbreak-val"),
+            },
+          };
+
+          function updateStepperDisplay(key) {
+            const item = steppers[key];
+            if (item && item.el) {
+              item.el.textContent = item.val + " min";
+              item.el.classList.add("scale-110");
+              setTimeout(() => item.el.classList.remove("scale-110"), 150);
+            }
+          }
+
+          // Attach Stepper Listeners
+          document
+            .getElementById("focus-dec")
+            ?.addEventListener("click", () => {
+              if (steppers.focus.val > steppers.focus.min) {
+                steppers.focus.val -= steppers.focus.step;
+                updateStepperDisplay("focus");
+              }
+            });
+          document
+            .getElementById("focus-inc")
+            ?.addEventListener("click", () => {
+              if (steppers.focus.val < steppers.focus.max) {
+                steppers.focus.val += steppers.focus.step;
+                updateStepperDisplay("focus");
+              }
+            });
+
+          document
+            .getElementById("sbreak-dec")
+            ?.addEventListener("click", () => {
+              if (steppers.sbreak.val > steppers.sbreak.min) {
+                steppers.sbreak.val -= steppers.sbreak.step;
+                updateStepperDisplay("sbreak");
+              }
+            });
+          document
+            .getElementById("sbreak-inc")
+            ?.addEventListener("click", () => {
+              if (steppers.sbreak.val < steppers.sbreak.max) {
+                steppers.sbreak.val += steppers.sbreak.step;
+                updateStepperDisplay("sbreak");
+              }
+            });
+
+          document
+            .getElementById("lbreak-dec")
+            ?.addEventListener("click", () => {
+              if (steppers.lbreak.val > steppers.lbreak.min) {
+                steppers.lbreak.val -= steppers.lbreak.step;
+                updateStepperDisplay("lbreak");
+              }
+            });
+          document
+            .getElementById("lbreak-inc")
+            ?.addEventListener("click", () => {
+              if (steppers.lbreak.val < steppers.lbreak.max) {
+                steppers.lbreak.val += steppers.lbreak.step;
+                updateStepperDisplay("lbreak");
+              }
+            });
+
+          // Volume Slider
+          const volSlider = document.getElementById("volume-slider");
+          const volReadout = document.getElementById("volume-readout");
+          volSlider?.addEventListener("input", (e) => {
+            if (volReadout) {
+              volReadout.textContent = e.target.value + "%";
+            }
+          });
+
+          // Preview Tone Interaction
+          const previewBtn = document.getElementById("preview-audio-btn");
+          const previewIcon = document.getElementById("preview-icon");
+          const previewText = document.getElementById("preview-text");
+          let isPlaying = false;
+          let previewTimeout = null;
+
+          previewBtn?.addEventListener("click", () => {
+            if (isPlaying) return;
+            isPlaying = true;
+            if (previewIcon) previewIcon.textContent = "graphic_eq";
+            if (previewText) previewText.textContent = "Playing";
+            previewBtn.classList.add(
+              "bg-primary-fixed",
+              "text-on-primary-fixed",
+            );
+
+            clearTimeout(previewTimeout);
+            previewTimeout = setTimeout(() => {
+              isPlaying = false;
+              if (previewIcon) previewIcon.textContent = "play_arrow";
+              if (previewText) previewText.textContent = "Preview";
+              previewBtn.classList.remove(
+                "bg-primary-fixed",
+                "text-on-primary-fixed",
+              );
+            }, 1600);
+          });
+
+          // Native iOS Style Toggles
+          function setupToggle(btnId, thumbId, initialOn = true) {
+            const btn = document.getElementById(btnId);
+            const thumb = document.getElementById(thumbId);
+            let isOn = initialOn;
+
+            function render() {
+              if (!btn || !thumb) return;
+              btn.setAttribute("aria-checked", isOn ? "true" : "false");
+              if (isOn) {
+                btn.classList.remove("bg-surface-container");
+                btn.classList.add("bg-primary-container");
+                thumb.classList.remove("translate-x-0");
+                thumb.classList.add("translate-x-5");
+              } else {
+                btn.classList.remove("bg-primary-container");
+                btn.classList.add("bg-surface-container");
+                thumb.classList.remove("translate-x-5");
+                thumb.classList.add("translate-x-0");
+              }
+            }
+
+            btn?.addEventListener("click", () => {
+              isOn = !isOn;
+              render();
+            });
+
+            render();
+          }
+
+          setupToggle("toggle-haptics", "haptics-thumb", true);
+          setupToggle("toggle-awake", "awake-thumb", true);
+
+          // Reset Defaults
+          const resetBtn = document.getElementById("reset-btn");
+          resetBtn?.addEventListener("click", () => {
+            steppers.focus.val = 25;
+            steppers.sbreak.val = 5;
+            steppers.lbreak.val = 15;
+            updateStepperDisplay("focus");
+            updateStepperDisplay("sbreak");
+            updateStepperDisplay("lbreak");
+
+            if (volSlider && volReadout) {
+              volSlider.value = 70;
+              volReadout.textContent = "70%";
+            }
+
+            const originalText = resetBtn.querySelector(".text-error");
+            if (originalText) {
+              const prevContent = originalText.textContent;
+              originalText.textContent = "Restored to Defaults ✓";
+              setTimeout(() => {
+                originalText.textContent = prevContent;
+              }, 1200);
+            }
+          });
+        })();
+      </script>
+    </main>
+    <nav
+      class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.03)]"
+      data-active-classes="text-primary font-title-sm"
+    >
+      <div
+        class="flex justify-around items-center h-16 max-w-md mx-auto px-space-sm"
+      >
+        <a
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="timer"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">timer</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Timer</span
+          ></a
+        ><a
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="tasks"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">checklist</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Tasks</span
+          ></a
+        ><a
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="insights"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">equalizer</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Insights</span
+          ></a
+        ><a
+          aria-current="page"
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md transition-colors text-primary font-title-sm"
+          data-path="settings"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">settings</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Settings</span
+          ></a
+        >
+      </div>
+    </nav>
+  </body>
+</html>
+
+<!-- Main Focus Timer -->
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+      name="viewport"
+    />
+    <meta content="mobile_tab" name="shell-type" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#00174b",
+              "tertiary-fixed": "#7ffc97",
+              "on-error": "#ffffff",
+              "surface-variant": "#dae2fd",
+              "inverse-surface": "#283044",
+              "on-surface-variant": "#434655",
+              "on-primary-fixed-variant": "#003ea8",
+              outline: "#737686",
+              "error-container": "#ffdad6",
+              "on-primary-container": "#eeefff",
+              "outline-variant": "#c3c6d7",
+              secondary: "#1d4ed8",
+              "primary-container": "#2563eb",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed-variant": "#005320",
+              "surface-container-highest": "#dae2fd",
+              "tertiary-fixed-dim": "#62df7d",
+              "secondary-fixed-dim": "#b7c4ff",
+              "secondary-fixed": "#dce1ff",
+              "on-secondary-fixed": "#001551",
+              "surface-bright": "#faf8ff",
+              "surface-container-low": "#f2f3ff",
+              "surface-dim": "#d2d9f4",
+              error: "#ba1a1a",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#e2e7ff",
+              "surface-tint": "#0053db",
+              "secondary-container": "#4069f2",
+              "on-tertiary-container": "#c7ffca",
+              primary: "#004ac6",
+              tertiary: "#006329",
+              surface: "#faf8ff",
+              "on-background": "#131b2e",
+              "inverse-on-surface": "#eef0ff",
+              "primary-fixed": "#dbe1ff",
+              "tertiary-container": "#007f36",
+              "primary-fixed-dim": "#b4c5ff",
+              "on-secondary-fixed-variant": "#0039b5",
+              "on-secondary-container": "#fffbff",
+              "inverse-primary": "#b4c5ff",
+              "surface-container": "#eaedff",
+              background: "#faf8ff",
+              "on-surface": "#131b2e",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed": "#002109",
+              "on-secondary": "#ffffff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              margin: "1.25rem",
+              gutter: "1rem",
+              "gutter-sm": "0.75rem",
+              "space-sm": "0.5rem",
+              "space-md": "1rem",
+              "space-lg": "1.5rem",
+              "margin-mobile": "1.25rem",
+              "space-xs": "0.25rem",
+              "space-xl": "2rem",
+            },
+            fontFamily: {
+              "title-sm": ["Inter"],
+              "body-sm": ["Inter"],
+              "body-md": ["Inter"],
+              "headline-lg": ["Inter"],
+              "headline-md": ["Inter"],
+              "label-md": ["Inter"],
+              "body-lg": ["Inter"],
+              "display-timer-compact": ["Inter"],
+              "display-timer": ["Inter"],
+              "label-caps": ["Inter"],
+            },
+            fontSize: {
+              "title-sm": [
+                "16px",
+                {
+                  lineHeight: "22px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }],
+              "body-md": ["15px", { lineHeight: "22px", fontWeight: "400" }],
+              "headline-lg": [
+                "28px",
+                {
+                  lineHeight: "34px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-md": [
+                "22px",
+                {
+                  lineHeight: "28px",
+                  letterSpacing: "-0.015em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-md": ["14px", { lineHeight: "18px", fontWeight: "500" }],
+              "body-lg": [
+                "17px",
+                {
+                  lineHeight: "24px",
+                  letterSpacing: "-0.005em",
+                  fontWeight: "400",
+                },
+              ],
+              "display-timer-compact": [
+                "56px",
+                {
+                  lineHeight: "64px",
+                  letterSpacing: "-0.03em",
+                  fontWeight: "300",
+                },
+              ],
+              "display-timer": [
+                "76px",
+                {
+                  lineHeight: "84px",
+                  letterSpacing: "-0.04em",
+                  fontWeight: "300",
+                },
+              ],
+              "label-caps": [
+                "11px",
+                {
+                  lineHeight: "14px",
+                  letterSpacing: "0.06em",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @layer base {
+        html,
+        body {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+          background-color: #faf8ff;
+        }
+        .pb-safe {
+          padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+        .pt-safe {
+          padding-top: env(safe-area-inset-top, 0px);
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen antialiased"
+  >
+    <header
+      class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.02)]"
+    >
+      <div class="h-16 px-margin flex items-center justify-between">
+        <div class="flex items-center space-x-space-sm">
+          <span class="material-symbols-outlined text-primary text-[24px]"
+            >self_improvement</span
+          >
+          <h1
+            class="font-title-sm text-title-sm tracking-tight text-on-surface select-none"
+          >
+            Timer
+          </h1>
+        </div>
+        <div class="flex items-center space-x-space-sm">
+          <div
+            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined text-on-primary text-[18px]"
+              >person</span
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <main
+      class="flex-1 flex flex-col relative w-full px-margin pt-16 pb-28 bg-surface"
+    >
+      <div
+        class="flex flex-col w-full max-w-md mx-auto space-y-space-lg select-none"
+      >
+        <!-- Sub-header bar for session context & controls -->
+        <div class="flex items-center justify-between pt-space-xs">
+          <div class="flex items-center space-x-1.5">
+            <span
+              class="font-headline-md text-headline-md tracking-tight text-on-surface font-semibold"
+              >Still</span
+            >
+            <span class="w-1.5 h-1.5 rounded-full bg-primary mb-1"></span>
+          </div>
+          <button
+            aria-label="Timer settings"
+            class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors focus:outline-none"
+          >
+            <span class="material-symbols-outlined text-[20px]">tune</span>
+          </button>
+        </div>
+        <!-- Session Mode Selector -->
+        <div class="flex justify-center w-full">
+          <div
+            class="inline-flex p-1 bg-surface-container rounded-full shadow-sm"
+            role="tablist"
+          >
+            <button
+              aria-selected="true"
+              class="px-space-lg py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm transition-all focus:outline-none"
+              id="focus-tab"
+              role="tab"
+            >
+              Focus
+            </button>
+            <button
+              aria-selected="false"
+              class="px-space-lg py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all focus:outline-none"
+              id="break-tab"
+              role="tab"
+            >
+              Break
+            </button>
+          </div>
+        </div>
+        <!-- Circular Timer Display -->
+        <div
+          class="relative flex flex-col items-center justify-center my-space-xs"
+        >
+          <div
+            class="relative w-[260px] h-[260px] flex items-center justify-center"
+          >
+            <!-- Glow effect -->
+            <div
+              class="absolute inset-2 rounded-full bg-surface-container-low blur-xl -z-10 opacity-70"
+            ></div>
+            <svg
+              class="w-full h-full -rotate-90 transform"
+              viewbox="0 0 260 260"
+            >
+              <!-- Background Track -->
+              <circle
+                class="text-surface-container-high stroke-current"
+                cx="130"
+                cy="130"
+                fill="none"
+                r="114"
+                stroke-width="5"
+              ></circle>
+              <!-- Active Progress Arc -->
+              <circle
+                class="text-primary stroke-current transition-all duration-1000 ease-linear"
+                cx="130"
+                cy="130"
+                fill="none"
+                id="timer-progress"
+                r="114"
+                stroke-dasharray="716.28"
+                stroke-dashoffset="0"
+                stroke-linecap="round"
+                stroke-width="5"
+              ></circle>
+            </svg>
+            <!-- Center Typography & State -->
+            <div
+              class="absolute flex flex-col items-center justify-center text-center px-4"
+            >
+              <span
+                class="font-label-caps text-label-caps text-on-surface-variant tracking-widest uppercase mb-1"
+              >
+                Time to Focus
+              </span>
+              <span
+                class="font-display-timer-compact text-display-timer-compact font-light text-on-surface tracking-tighter tabular-nums leading-none my-1"
+                id="timer-digits"
+              >
+                25:00
+              </span>
+              <span
+                class="font-body-sm text-body-sm italic text-on-surface-variant/80 mt-1"
+              >
+                One thing at a time.
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- Primary Action Controls -->
+        <div class="flex flex-col items-center justify-center space-y-2">
+          <button
+            class="w-full max-w-[240px] h-14 rounded-full bg-primary text-on-primary flex items-center justify-center space-x-2 shadow-md hover:bg-secondary active:scale-[0.98] transition-all focus:outline-none"
+            id="start-btn"
+          >
+            <span
+              class="material-symbols-outlined text-[24px]"
+              id="start-icon"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >play_arrow</span
+            >
+            <span
+              class="font-label-md text-label-md tracking-wide"
+              id="start-label"
+              >Start Focus</span
+            >
+          </button>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">
+            Tap to pause or adjust
+          </p>
+        </div>
+        <!-- Ambient Soundscapes -->
+        <div class="flex flex-col space-y-space-sm pt-2">
+          <div class="flex items-center justify-between px-1">
+            <h2
+              class="font-label-md text-label-md font-semibold text-on-surface"
+            >
+              Ambient sounds
+            </h2>
+            <a
+              class="font-body-sm text-body-sm text-primary flex items-center space-x-0.5 hover:underline"
+              href="#"
+            >
+              <span>Soundscapes</span>
+              <span class="material-symbols-outlined text-[16px]"
+                >chevron_right</span
+              >
+            </a>
+          </div>
+          <!-- Sound Cards Grid -->
+          <div class="grid grid-cols-3 gap-space-sm" id="soundscape-group">
+            <!-- Active Card: Rain -->
+            <button
+              class="sound-card flex flex-col items-center justify-center p-space-md rounded-xl bg-surface-container-high text-primary shadow-sm transition-all focus:outline-none"
+              data-sound="rain"
+            >
+              <div
+                class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-2 text-primary"
+              >
+                <span class="material-symbols-outlined text-[22px]">rainy</span>
+              </div>
+              <span
+                class="font-label-md text-label-md font-medium text-on-surface"
+                >Rain</span
+              >
+            </button>
+            <!-- Ocean -->
+            <button
+              class="sound-card flex flex-col items-center justify-center p-space-md rounded-xl bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-low shadow-sm transition-all focus:outline-none"
+              data-sound="ocean"
+            >
+              <div
+                class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center mb-2 text-on-surface-variant"
+              >
+                <span class="material-symbols-outlined text-[22px]">waves</span>
+              </div>
+              <span
+                class="font-label-md text-label-md font-medium text-on-surface"
+                >Ocean</span
+              >
+            </button>
+            <!-- Cafe -->
+            <button
+              class="sound-card flex flex-col items-center justify-center p-space-md rounded-xl bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-low shadow-sm transition-all focus:outline-none"
+              data-sound="cafe"
+            >
+              <div
+                class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center mb-2 text-on-surface-variant"
+              >
+                <span class="material-symbols-outlined text-[22px]"
+                  >coffee</span
+                >
+              </div>
+              <span
+                class="font-label-md text-label-md font-medium text-on-surface"
+                >Cafe</span
+              >
+            </button>
+          </div>
+        </div>
+        <!-- Quiet Footer Summary & Dots -->
+        <div class="pt-2 flex flex-col items-center justify-center space-y-2.5">
+          <div
+            aria-label="0 of 4 sessions completed"
+            class="flex items-center space-x-2"
+          >
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            <span
+              class="w-2 h-2 rounded-full bg-surface-container-highest"
+            ></span>
+            <span
+              class="w-2 h-2 rounded-full bg-surface-container-highest"
+            ></span>
+            <span
+              class="w-2 h-2 rounded-full bg-surface-container-highest"
+            ></span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">
+            0 of 4 sessions completed today
+          </p>
+        </div>
+      </div>
+      <script>
+        (function () {
+          const startBtn = document.getElementById("start-btn");
+          const startIcon = document.getElementById("start-icon");
+          const startLabel = document.getElementById("start-label");
+          const timerDigits = document.getElementById("timer-digits");
+          const progressCircle = document.getElementById("timer-progress");
+          const soundCards = document.querySelectorAll(".sound-card");
+
+          let isRunning = false;
+          let totalSeconds = 25 * 60;
+          let remainingSeconds = totalSeconds;
+          let timerInterval = null;
+          const circumference = 2 * Math.PI * 114;
+
+          function updateDisplay() {
+            const minutes = Math.floor(remainingSeconds / 60);
+            const seconds = remainingSeconds % 60;
+            timerDigits.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+            const offset =
+              circumference -
+              ((totalSeconds - remainingSeconds) / totalSeconds) *
+                circumference;
+            progressCircle.style.strokeDashoffset = offset;
+          }
+
+          startBtn.addEventListener("click", () => {
+            isRunning = !isRunning;
+            if (isRunning) {
+              startIcon.textContent = "pause";
+              startLabel.textContent = "Pause";
+              timerInterval = setInterval(() => {
+                if (remainingSeconds > 0) {
+                  remainingSeconds--;
+                  updateDisplay();
+                } else {
+                  clearInterval(timerInterval);
+                  isRunning = false;
+                  startIcon.textContent = "play_arrow";
+                  startLabel.textContent = "Start Focus";
+                }
+              }, 1000);
+            } else {
+              clearInterval(timerInterval);
+              startIcon.textContent = "play_arrow";
+              startLabel.textContent = "Resume";
+            }
+          });
+
+          soundCards.forEach((card) => {
+            card.addEventListener("click", () => {
+              soundCards.forEach((c) => {
+                c.classList.remove("bg-surface-container-high", "text-primary");
+                c.classList.add(
+                  "bg-surface-container-lowest",
+                  "text-on-surface-variant",
+                );
+                const iconContainer = c.querySelector("div");
+                iconContainer.classList.remove("bg-primary/10", "text-primary");
+                iconContainer.classList.add(
+                  "bg-surface-container",
+                  "text-on-surface-variant",
+                );
+              });
+
+              card.classList.remove(
+                "bg-surface-container-lowest",
+                "text-on-surface-variant",
+              );
+              card.classList.add("bg-surface-container-high", "text-primary");
+              const iconContainer = card.querySelector("div");
+              iconContainer.classList.remove(
+                "bg-surface-container",
+                "text-on-surface-variant",
+              );
+              iconContainer.classList.add("bg-primary/10", "text-primary");
+            });
+          });
+
+          const focusTab = document.getElementById("focus-tab");
+          const breakTab = document.getElementById("break-tab");
+
+          focusTab.addEventListener("click", () => {
+            focusTab.className =
+              "px-space-lg py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm transition-all focus:outline-none";
+            breakTab.className =
+              "px-space-lg py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all focus:outline-none";
+            clearInterval(timerInterval);
+            isRunning = false;
+            totalSeconds = 25 * 60;
+            remainingSeconds = totalSeconds;
+            startIcon.textContent = "play_arrow";
+            startLabel.textContent = "Start Focus";
+            updateDisplay();
+          });
+
+          breakTab.addEventListener("click", () => {
+            breakTab.className =
+              "px-space-lg py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm transition-all focus:outline-none";
+            focusTab.className =
+              "px-space-lg py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all focus:outline-none";
+            clearInterval(timerInterval);
+            isRunning = false;
+            totalSeconds = 5 * 60;
+            remainingSeconds = totalSeconds;
+            startIcon.textContent = "play_arrow";
+            startLabel.textContent = "Start Break";
+            updateDisplay();
+          });
+        })();
+      </script>
+    </main>
+    <nav
+      class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.03)]"
+      data-active-classes="text-primary font-title-sm"
+    >
+      <div
+        class="flex justify-around items-center h-16 max-w-md mx-auto px-space-sm"
+      >
+        <a
+          aria-current="page"
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md transition-colors text-primary font-title-sm"
+          data-path="timer"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">timer</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Timer</span
+          ></a
+        ><a
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="tasks"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">checklist</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Tasks</span
+          ></a
+        ><a
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="insights"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">equalizer</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Insights</span
+          ></a
+        ><a
+          class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-md text-on-surface-variant hover:text-on-surface transition-colors"
+          data-path="settings"
+          href="#"
+          ><span class="material-symbols-outlined text-[22px]">settings</span
+          ><span
+            class="font-label-caps text-label-caps mt-space-xs tracking-wider uppercase"
+            >Settings</span
+          ></a
+        >
+      </div>
+    </nav>
+  </body>
+</html>
